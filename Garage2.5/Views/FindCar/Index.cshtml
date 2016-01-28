@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Garage2.Models.vehicle>
+
+@{
+    ViewBag.Title = "Sök bil";
+}
+
+<h2>Sök bil</h2>
+@using (Html.BeginForm("Index", "FindCar", FormMethod.Get))
+{
+    <div>
+        <text>Skriv in registreringsnummer. </text><input type="text" name="reg" />&nbsp;
+        <input type="submit" value="Sök" id="btnSubmit" />
+    </div>
+}
+
+<div id="DivGrid">
+    @{
+        //tested by Mai .
+        var reg = ViewData["reg"] as string; <!-- Typecasting is needed here -->
+
+        if (Model.Count() > 0 && @reg != null)
+        {
+            var grid = new WebGrid(source: Model, canPage: true, rowsPerPage: 2, defaultSort: "Id");
+            @grid.GetHtml(
+                tableStyle: "PGrid", 
+                headerStyle: "Header", 
+                alternatingRowStyle: "altRow", 
+                htmlAttributes: new { id = "DataTable" }, 
+                columns: grid.Columns(
+                    grid.Column("RegNumber", "Registreringsnummer"),
+                    grid.Column("VehicleTypeId", "Märke"),
+                    grid.Column("ParkedTime", "Parkeringstid")));
+        }
+        else if (Model.Count() == 0 && @reg != null)
+        {
+            <hr />@Html.Label("Bilen finns inte i garaget !")<hr />
+        }
+        else if (Model.Count() > 0 && @reg == null)
+        {
+            <hr />@Html.Label("")<hr />
+        }
+    }
+</div>
+

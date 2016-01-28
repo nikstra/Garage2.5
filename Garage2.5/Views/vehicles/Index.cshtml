@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Garage2.Models.vehicle>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista på parkerade bilar</h2>
+
+<p>
+    @Html.ActionLink("Parkera din bil", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RegNumber)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Colour)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.VehicleTypeId)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Wheels)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.ParkedTime)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegNumber)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Colour)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.VehicleTypeId)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Wheels)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.ParkedTime)
+            </td>
+            <td>
+                @Html.ActionLink("Editera", "Edit", new { id=item.Id }) |
+                @Html.ActionLink("Detaljer", "Details", new { id=item.Id }) |
+                @Html.ActionLink("Hämta ut", "Delete", new { id=item.Id })
+            </td>
+        </tr>
+    }
+
+    </table>

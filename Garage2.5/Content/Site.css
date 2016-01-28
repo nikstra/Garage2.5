@@ -1,0 +1,61 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-repeat: no-repeat;
+    /*background-position: center center;*/
+    background-image: url('../Images/8589130455908-2013-dodge-viper-srt-coupe-garage-wallpaper-hd.jpg');
+    background-size: cover;
+
+ 
+    
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    /*min-height:500px;*/
+    background-color:white; 
+    opacity: 0.7;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* huvundmeny*/
+.main-header {
+    padding: 30px 0px 30px 0px;
+    /*font-weight: 600;*/
+    font-size: 58px;
+    font-family: beamweapon;
+    text-align: center;
+    color: black;
+    /*background-color: darkblue;*/
+    margin-bottom: 30px;
+    /*border-bottom: 5px solid grey;
+    border-top: 5px solid grey;*/
+    /*background-image: url('../Images/chi-dk5883-disney-cars-garage-metal-black-wallpaper-0.jpg');*/
+    background-image: url('../Images/3067193_230736-2-jual-plat-bordes-stainless-steel-dan-alumunium.jpg');
+}
+
+
+@font-face {
+    font-family: 'beamweapon';
+    src: url('../fonts/beamweapon.ttf') format('truetype');
+}
+
+.Header > th {
+     width: 200px; 
+}
+/*.hr1{ height:1px;border:none;border-top:1px solid #555555;}*/

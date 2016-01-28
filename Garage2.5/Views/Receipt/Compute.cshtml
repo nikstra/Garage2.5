@@ -1,0 +1,26 @@
+﻿@model Garage2.Models.vehicle
+
+@{
+    ViewBag.Title = "Kvitto för parkerad tid";
+}
+
+
+<h2>Kvitto förparkerad tid</h2>
+
+@using (Html.BeginForm("Compute", "Receipt", FormMethod.Get))
+{
+    <div>
+        <text>ditt registreringsnummer : @ViewData["reg"]</text>&nbsp;
+        
+    </div>
+}
+
+<h3> Bilinformation </h3><hr />
+<div>
+    <b>Registreringsnummer:</b> @ViewData["reg"]<br />
+    <b>Märke:</b> @ViewData["VehicleTypeId"]<br />
+    <b>Totalparkeringstid:</b> @ViewData["hour"]<br />
+    <b>Kostnad:</b> @ViewData["cost"]<br />
+</div>
+
+
