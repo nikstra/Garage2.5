@@ -18,10 +18,12 @@
 <h3> Bilinformation </h3><hr />
 <div>
     <b>Registreringsnummer:</b> @ViewData["reg"]<br />
-    <b>Ägre:</b> @ViewData["Name"]<br />
-    <b>Typ:</b> @ViewData["Type"]<br />
+    <b>Ägre:</b> @ViewData["Member"]<br /> <!-- Fixed name for ViewData Member and VehicleType -->
+    <b>Typ:</b> @ViewData["VehicleType"]<br />
     <b>Totalparkeringstid:</b> @ViewData["hour"]<br />
     <b>Kostnad:</b> @ViewData["cost"]<br />
 </div>
 
-
+<div>
+    @Html.ActionLink("Back to List", "Index", "Fordon2")
+</div>

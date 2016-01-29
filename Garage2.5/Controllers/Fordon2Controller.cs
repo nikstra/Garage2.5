@@ -83,6 +83,7 @@ namespace Garage2.Controllers
         {
             if (ModelState.IsValid)
             {
+                vehicle.ParkedTime = DateTime.Now;
                 db.vehicles.Add(vehicle);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -149,9 +150,11 @@ namespace Garage2.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             vehicle vehicle = db.vehicles.Find(id);
-            db.vehicles.Remove(vehicle);
             TempData["Vehicle"] = vehicle;
+            TempData["VehicleType"] = vehicle.VehicleType.Type; // Sub query for VehicleType before the vehicle is deleted.
+            TempData["MemberName"] = vehicle.Member.Name; // Sub query for Member before the vehicle is deleted.
         
+            db.vehicles.Remove(vehicle); // Moved this line to after TempData assignment.
             db.SaveChanges();
             
             return RedirectToAction("../Receipt/Compute");

@@ -48,9 +48,9 @@ namespace Garage2.Migrations
 
             context.vehicles.AddOrUpdate(
                 r => r.RegNumber,
-                new vehicle { RegNumber = "ABC 123", Colour = "röd", VehicleTypeId = 1, MemberId = 1, Model = "Volvo", Wheels = 4, ParkedTime = new DateTime(2016, 1, 28, 13, 24, 0), VehicleType = new VehicleType { Type = "Bil" } },
-                new vehicle { RegNumber = "BCD 456", Colour = "blå", VehicleTypeId = 1, MemberId = 2, Model = "Saab", Wheels = 4, ParkedTime = new DateTime(2016, 1, 24, 10, 12, 0), VehicleType = new VehicleType { Type = "Bil" } },
-                new vehicle { RegNumber = "CDE 789", Colour = "gul", VehicleTypeId = 1, MemberId = 3, Model = "Opel", Wheels = 4, ParkedTime = new DateTime(2016, 1, 29, 8, 56, 0), VehicleType = new VehicleType { Type = "Bil" } }
+                new vehicle { RegNumber = "ABC 123", Colour = "röd", VehicleTypeId = 1, MemberId = 1, Model = "Volvo", Wheels = 4, ParkedTime = new DateTime(2016, 1, 28, 13, 24, 0) /*, VehicleType = new VehicleType { Type = "Bil" } */ },
+                new vehicle { RegNumber = "BCD 456", Colour = "blå", VehicleTypeId = 1, MemberId = 2, Model = "Saab", Wheels = 4, ParkedTime = new DateTime(2016, 1, 24, 10, 12, 0) /*, VehicleType = new VehicleType { Type = "Bil" } */ },
+                new vehicle { RegNumber = "CDE 789", Colour = "gul", VehicleTypeId = 1, MemberId = 3, Model = "Opel", Wheels = 4, ParkedTime = new DateTime(2016, 1, 29, 8, 56, 0) /*, VehicleType = new VehicleType { Type = "Bil" } */ }
                 );
         }
     }

@@ -18,8 +18,11 @@ namespace Garage2.Controllers
             vehicle car = (vehicle)TempData["Vehicle"];
     
             ViewData["reg"] = car.RegNumber;
-            ViewData["VehicleType"] = car.VehicleType;// here we have a problem to get this value
-            ViewData["Member"] = car.Member.Name;// here we have a problem to get this value
+            ViewData["VehicleType"] = TempData["VehicleType"]; // Use a separate TempData for VehicleType.
+            ViewData["Member"] = TempData["MemberName"]; // Use a separate TempData for MemberName.
+
+            //ViewData["VehicleType"] = car.VehicleType;// here we have a problem to get this value
+            //ViewData["Member"] = car.Member.Name;// here we have a problem to get this value
 
             DateTime startTime = car.ParkedTime;
             DateTime endTime = DateTime.Now;
