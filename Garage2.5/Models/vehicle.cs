@@ -24,8 +24,8 @@ namespace Garage2.Models
 
         [Display(Name = "Modell")]
         public string Model { get; set; }
-        [Range(3,8 ,
-            ErrorMessage = "Fordon med hjul färre än 3 eller mer än 8 är icke parkeringsbara!")]
+        [Range(2,8 ,
+            ErrorMessage = "Fordon med hjul färre än 2 eller mer än 8 är icke parkeringsbara!")]
         [Display(Name = "Antal hjul")]
         public int Wheels { get; set; }
         [Display(Name = "Parkeringstid")]
