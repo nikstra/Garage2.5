@@ -15,9 +15,17 @@ namespace Garage2.Controllers
         private VehiclesDb db = new VehiclesDb();
 
         // GET: Members
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string searchString)
         {
-            return View(db.Members.ToList());
+            var Members = from m in db.Members select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                Members = Members.Where(m => m.Name.Contains(searchString) || m.email.Contains(searchString) || m.mobile.Contains(searchString));
+            }
+            
+
+            return View(Members.ToList());
         }
 
         // GET: Members/Details/5

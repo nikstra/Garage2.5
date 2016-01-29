@@ -16,7 +16,7 @@ namespace Garage2.Controllers
         {
 
             vehicle car = (vehicle)TempData["Vehicle"];
-    
+            //string membername = new Garage2.Models.VehiclesDb().Members.Where(m => m.MemberId == car.MemberId).FirstOrDefault().Name;
             ViewData["reg"] = car.RegNumber;
             ViewData["VehicleType"] = TempData["VehicleType"]; // Use a separate TempData for VehicleType.
             ViewData["Member"] = TempData["MemberName"]; // Use a separate TempData for MemberName.
