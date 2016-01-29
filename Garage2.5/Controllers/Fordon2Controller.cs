@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Garage2.Models;
 
-namespace Garage2
+namespace Garage2.Controllers
 {
     public class Fordon2Controller : Controller
     {
