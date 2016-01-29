@@ -15,11 +15,41 @@ namespace Garage2
         private VehiclesDb db = new VehiclesDb();
 
         // GET: Fordon2
-        public ActionResult Index()
+        public ViewResult Index(string sortOrder, string searchString)
         {
-            var vehicles = db.vehicles.Include(v => v.Member).Include(v => v.VehicleType);
-            return View(vehicles.ToList());
-        }
+            //var vehicles = db.vehicles.Include(v => v.Member).Include(v => v.VehicleType);
+            //return View(vehicles.ToList());
+
+    ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Name" : "";
+    ViewBag.DateSortParm = sortOrder == "Parkeringstid" ? "date_desc" : "Parkeringstid";
+    var vehicles = db.vehicles.Include(v => v.Member).Include(v => v.VehicleType);
+                 
+    if (!String.IsNullOrEmpty(searchString))
+    {
+        vehicles = vehicles.Where(s => s.RegNumber.Contains(searchString) || s.Member.Name.Contains(searchString) || s.VehicleType.Type.Contains(searchString));
+    }
+    switch (sortOrder)
+    {
+        case "Member":
+            vehicles = vehicles.OrderByDescending(s => s.Member.Name);
+            break;
+        case "Parkeringstid":
+            vehicles = vehicles.OrderBy(s => s.ParkedTime);
+            break;
+        case "date_desc":
+            vehicles = vehicles.OrderByDescending(s => s.ParkedTime);
+            break;
+        case "VehicleType":
+            vehicles = vehicles.OrderByDescending(s => s.VehicleType.Type );
+            break;
+        default:
+            vehicles = vehicles.OrderBy(s => s.RegNumber );
+            break;
+    }
+
+    return View(vehicles.ToList());
+}
+        
 
         // GET: Fordon2/Details/5
         public ActionResult Details(int? id)
@@ -120,8 +150,12 @@ namespace Garage2
         {
             vehicle vehicle = db.vehicles.Find(id);
             db.vehicles.Remove(vehicle);
+            TempData["Vehicle"] = vehicle;
+        
             db.SaveChanges();
-            return RedirectToAction("Index");
+            
+            return RedirectToAction("../Receipt/Compute");
+           
         }
 
         protected override void Dispose(bool disposing)
