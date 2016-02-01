@@ -28,7 +28,9 @@
                 htmlAttributes: new { id = "DataTable" }, 
                 columns: grid.Columns(
                     grid.Column("RegNumber", "Registreringsnummer"),
-                    grid.Column("VehicleTypeId", "Märke"),
+                    grid.Column("VehicleType.Type", "Typ"),
+                         grid.Column("Model", "Märke"),                                    
+                          grid.Column("Member.Name", "Medlem"),
                     grid.Column("ParkedTime", "Parkeringstid")));
         }
         else if (Model.Count() == 0 && @reg != null)

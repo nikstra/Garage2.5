@@ -30,8 +30,8 @@ namespace Garage2.Controllers
 
             var minutes = diff.TotalMinutes;
 
-            double hours = diff.TotalHours;
-            int hour = (int)Math.Round(hours);
+           // double hours = diff.TotalHours;
+           // int hour = (int)Math.Round(hours);
             ViewData["hour"] = diff.ToString(@"dd\.hh\:mm");
             int pricePerMinute = 1;
 
